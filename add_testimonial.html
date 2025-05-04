@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Testimonial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="branch-selector">
+                <label for="branch">Select Branch:</label>
+                <select id="branch">
+                    <option value="branchA">Branch A</option>
+                    <option value="branchB">Branch B</option>
+                </select>
+            </div>
+            <ul>
+                <li><a href="index.html">Admin Dashboard (Home)</a></li>
+                <li><a href="add_customer.html">Add New Customer</a></li>
+                <li><a href="all_customers.html">All Customers</a></li>
+                <li><a href="add_expense.html">Add Expense</a></li>
+                <li><a href="add_testimonial.html">Add Testimonial</a></li>
+                <li><a href="manage_installments.html">Manage Installments</a></li>
+                <li><a href="manage_employees.html">Manage Employees</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <h1>Add Testimonial</h1>
+            <form id="add-testimonial-form">
+                <div class="form-group">
+                    <label for="customer_name">Customer Name:</label>
+                    <input type="text" id="customer_name" name="customer_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="course_taken">Course Taken:</label>
+                    <input type="text" id="course_taken" name="course_taken" required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">Feedback/Testimonial Text:</label>
+                    <textarea id="feedback" name="feedback" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating (optional: 1-5 stars):</label>
+                    <select id="rating" name="rating">
+                        <option value="">Select Rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+                <button type="submit">Submit</button>
+                <button type="reset">Cancel</button>
+            </form>
+            <h2>Testimonials</h2>
+            <ul id="testimonials-list">
+                <li>No testimonials yet.</li>
+            </ul>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

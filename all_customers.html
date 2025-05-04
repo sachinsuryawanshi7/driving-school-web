@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Customers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="branch-selector">
+                <label for="branch">Select Branch:</label>
+                <select id="branch">
+                    <option value="branchA">Branch A</option>
+                    <option value="branchB">Branch B</option>
+                </select>
+            </div>
+            <ul>
+                <li><a href="index.html">Admin Dashboard (Home)</a></li>
+                <li><a href="add_customer.html">Add New Customer</a></li>
+                <li><a href="all_customers.html">All Customers</a></li>
+                <li><a href="add_expense.html">Add Expense</a></li>
+                <li><a href="add_testimonial.html">Add Testimonial</a></li>
+                <li><a href="manage_installments.html">Manage Installments</a></li>
+                <li><a href="manage_employees.html">Manage Employees</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <h1>All Customers</h1>
+            <div class="search-filter">
+                <input type="text" id="search" placeholder="Search by name/contact/course">
+                <select id="filter_branch">
+                    <option value="">All Branches</option>
+                    <option value="branchA">Branch A</option>
+                    <option value="branchB">Branch B</option>
+                </select>
+                <select id="filter_payment_status">
+                    <option value="">All Payment Status</option>
+                    <option value="active">Active</option>
+                    <option value="completed">Completed</option>
+                    <option value="on_hold">On Hold</option>
+                </select>
+                <select id="filter_course_type">
+                    <option value="">All Course Types</option>
+                    <option value="driving_course">Driving Course</option>
+                    <option value="2_wheeler">2 Wheeler</option>
+                    <option value="3_wheeler">3 Wheeler</option>
+                    <option value="4_wheeler_nt">4 Wheeler NT</option>
+                </select>
+            </div>
+            <table id="customers-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th>Total Fee</th>
+                        <th>Paid</th>
+                        <th>Balance</th>
+                        <th>Branch</th>
+                        <th>Entry Date</th>
+                        <th>Next Installment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>123-456-7890</td>
+                        <td>john.doe@example.com</td>
+                        <td>Driving Course</td>
+                        <td>10000</td>
+                        <td>5000</td>
+                        <td>5000</td>
+                        <td>Branch A</td>
+                        <td>2023-01-01</td>
+                        <td>2023-02-01</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="#">Edit</a>
+                            <a href="#">View</a>
+                            <a href="#">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
