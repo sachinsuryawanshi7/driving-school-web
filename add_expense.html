@@ -3,45 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Add Expense</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="branch-selector">
-                <label for="branch">Select Branch:</label>
-                <select id="branch">
-                    <option value="branchA">Branch A</option>
-                    <option value="branchB">Branch B</option>
-                </select>
-            </div>
-            <ul>
-                <li><a href="index.html">Admin Dashboard (Home)</a></li>
-                <li><a href="add_customer.html">Add New Customer</a></li>
-                <li><a href="all_customers.html">All Customers</a></li>
-                <li><a href="add_expense.html">Add Expense</a></li>
-                <li><a href="add_testimonial.html">Add Testimonial</a></li>
-                <li><a href="manage_installments.html">Manage Installments</a></li>
-                <li><a href="manage_employees.html">Manage Employees</a></li>
-                <li><a href="reports.html">Reports</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg"> <!-- Added navbar-expand-lg for responsiveness -->
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="index.html">Akshay Gate’s Driving School</a> <!-- Updated href and added px-3 -->
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Added a collapse div for the search and sign out for smaller screens -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto px-3"> <!-- Used ml-auto to push to the right -->
+                 <li class="nav-item">
+                    <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> <!-- Removed w-100 -->
+                 </li>
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Sign out</a>
+                </li>
             </ul>
-        </nav>
-        <main class="content">
-            <h1>Add Expense</h1>
-            <form id="add-expense-form">
-                <div class="form-group">
-                    <label for="branch">Branch:</label>
-                    <select id="branch" name="branch">
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse vh-100 border-right"> <!-- Added vh-100 and border -->
+                <div class="sidebar-sticky pt-3 d-flex flex-column" style="height: calc(100% - 48px);"> <!-- Flex column for spacing -->
+                    <!-- Branch Selector Dropdown -->
+                    <div class="dropdown px-3 mb-3">
+                        <button class="btn btn-secondary dropdown-toggle w-100 btn-sm" type="button" id="branchDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Branch
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="branchDropdown">
+                            <li><a class="dropdown-item" href="#" data-branch="branchA">Branch A</a></li>
+                            <li><a class="dropdown-item" href="#" data-branch="branchB">Branch B</a></li>
+                        </ul>
+                    </div>
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"> <!-- Removed active class -->
+                                <span data-feather="home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_customer.html">
+                                <span data-feather="user-plus"></span>
+                                Add New Customer
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_customers.html">
+                                <span data-feather="users"></span>
+                                All Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="add_expense.html"> <!-- Active class for this page -->
+                                <span data-feather="dollar-sign"></span>
+                                Add Expense <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_testimonial.html">
+                                <span data-feather="message-square"></span>
+                                Add Testimonial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manage_installments.html">
+                                <span data-feather="calendar"></span>
+                                Manage Installments
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="manage_employees.html">
+                                <span data-feather="briefcase"></span>
+                                Manage Employees
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <span data-feather="settings"></span>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav flex-column mt-auto mb-3"> <!-- Pushes logout to bottom -->
+                        <hr class="mx-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="#">
+                                <span data-feather="log-out"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Add Expense</h1>
+                 </div>
+
+                 <form id="add-expense-form">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="branch-form">Branch:</label>
+                        <select id="branch-form" name="branch" class="form-control">
                         <option value="branchA">Branch A</option>
                         <option value="branchB">Branch B</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="expense_type">Expense Type:</label>
-                    <select id="expense_type" name="expense_type">
+                    <label class="font-weight-bold" for="expense_type">Expense Type:</label>
+                    <select id="expense_type" name="expense_type" class="form-control">
                         <option value="fuel">Fuel</option>
                         <option value="rent">Rent</option>
                         <option value="salary">Salary</option>
@@ -50,26 +135,118 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount" required>
+                    <label class="font-weight-bold" for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required>
+                    <label class="font-weight-bold" for="date">Date:</label>
+                    <input type="date" id="date" name="date" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="notes">Notes:</label>
-                    <textarea id="notes" name="notes"></textarea>
+                    <label class="font-weight-bold" for="notes">Notes:</label>
+                    <textarea id="notes" name="notes" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="receipt">Upload Receipt (optional):</label>
-                    <input type="file" id="receipt" name="receipt">
+                    <label class="font-weight-bold" for="receipt">Upload Receipt (optional):</label>
+                    <input type="file" id="receipt" name="receipt" class="form-control-file">
                 </div>
-                <button type="submit">Submit</button>
-                <button type="reset">Cancel</button>
+                    <label class="font-weight-bold" for="receipt">Upload Receipt (optional):</label>
+                    <input type="file" id="receipt" name="receipt" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Cancel</button> <!-- Changed btn-dark to btn-secondary -->
             </form>
-        </main>
+            </main>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script>
+        feather.replace(); // Initialize Feather Icons
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set today's date as default for Date field
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').value = today;
+
+            const addExpenseForm = document.getElementById('add-expense-form');
+
+            addExpenseForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const branch = document.getElementById('branch-form').value; // Updated ID
+                const expenseType = document.getElementById('expense_type').value;
+                const amount = document.getElementById('amount').value;
+                const date = document.getElementById('date').value;
+                const notes = document.getElementById('notes').value;
+                const receiptFile = document.getElementById('receipt').files[0]; // Get file object
+
+                // Basic validation
+                if (!branch || !expenseType || !amount || !date) {
+                    alert('Please fill in all required fields (Branch, Type, Amount, Date).');
+                    return;
+                }
+
+                // Create new expense object
+                const newExpense = {
+                    id: Date.now(), // Simple unique ID
+                    branch: branch,
+                    type: expenseType,
+                    amount: parseFloat(amount), // Use parseFloat for currency
+                    date: date,
+                    notes: notes,
+                    receiptFilename: receiptFile?.name || null // Store filename, actual upload needs server
+                };
+
+                // --- Local Storage Handling ---
+                try {
+                    let dashboardData = JSON.parse(localStorage.getItem('dashboardData')) || { customers: [], expenses: [], testimonials: [], employees: [] }; // Initialize if null
+
+                    // Ensure expenses array exists
+                    if (!Array.isArray(dashboardData.expenses)) {
+                        dashboardData.expenses = [];
+                    }
+
+                    dashboardData.expenses.push(newExpense);
+                    localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
+
+                    alert('Expense added successfully!');
+                    addExpenseForm.reset(); // Reset the form
+                    document.getElementById('date').value = today; // Reset date to today
+                    // Optionally redirect: window.location.href = 'index.html';
+
+                } catch (error) {
+                    console.error("Error saving expense data:", error);
+                    alert("Failed to save expense data. Please check console for details.");
+                }
+                // --- End Local Storage Handling ---
+            });
+        });
+    </script>
 </body>
 </html>
+
+</final_file_content>
+
+IMPORTANT: For any future changes to this file, use the final_file_content shown above as your reference. This content reflects the current state of the file, including any auto-formatting (e.g., if you used single quotes but the formatter converted them to double quotes). Always base your SEARCH/REPLACE operations on this final version to ensure accuracy.
+
+<environment_details>
+# VSCode Visible Files
+add_expense.html
+
+# Recently Modified Files
+These files have been modified since you last accessed them (file was just edited so you may need to re-read it before editing):
+add_expense.html
+
+# Current Time
+5/5/2025, 12:06:11 PM (Asia/Calcutta, UTC+5.5:00)
+
+# Context Window Usage
+357,900 / 1,048.576K tokens used (34%)
+
+# Current Mode
+ACT MODE
+</environment_details>

@@ -3,37 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Manage Employees</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="branch-selector">
-                <label for="branch">Select Branch:</label>
-                <select id="branch">
-                    <option value="branchA">Branch A</option>
-                    <option value="branchB">Branch B</option>
-                </select>
-            </div>
-            <ul>
-                <li><a href="index.html">Admin Dashboard (Home)</a></li>
-                <li><a href="add_customer.html">Add New Customer</a></li>
-                <li><a href="all_customers.html">All Customers</a></li>
-                <li><a href="add_expense.html">Add Expense</a></li>
-                <li><a href="add_testimonial.html">Add Testimonial</a></li>
-                <li><a href="manage_installments.html">Manage Installments</a></li>
-                <li><a href="manage_employees.html">Manage Employees</a></li>
-                <li><a href="reports.html">Reports</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg">
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="index.html">Akshay Gate’s Driving School</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto px-3">
+                <li class="nav-item">
+                    <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+                </li>
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Sign out</a>
+                </li>
             </ul>
-        </nav>
-        <main class="content">
-            <h1>Manage Employees</h1>
-            <p>This page is under construction.</p>
-        </main>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse vh-100 border-right">
+                <div class="sidebar-sticky pt-3 d-flex flex-column" style="height: calc(100% - 48px);">
+                    <!-- Branch Selector Dropdown -->
+                    <div class="dropdown px-3 mb-3">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle w-100" type="button" id="branchDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Branch
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="branchDropdown">
+                            <li><a class="dropdown-item" href="#" data-branch="branchA">Branch A</a></li>
+                            <li><a class="dropdown-item" href="#" data-branch="branchB">Branch B</a></li>
+                        </ul>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <span data-feather="home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_customer.html">
+                                <span data-feather="user-plus"></span>
+                                Add New Customer
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_customers.html">
+                                <span data-feather="users"></span>
+                                All Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_expense.html">
+                                <span data-feather="dollar-sign"></span>
+                                Add Expense
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_testimonial.html">
+                                <span data-feather="message-square"></span>
+                                Add Testimonial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manage_installments.html">
+                                <span data-feather="calendar"></span>
+                                Manage Installments
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" href="manage_employees.html">
+                                <span data-feather="briefcase"></span>
+                                Manage Employees
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <span data-feather="settings"></span>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column mt-auto mb-3">
+                        <hr class="mx-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="#">
+                                <span data-feather="log-out"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Manage Employees</h1>
+                 </div>
+
+                 <div class="alert alert-info text-center" role="alert">
+                    This page is under construction. Functionality coming soon!
+                 </div>
+
+                 <!-- Placeholder for future content -->
+
+            </main>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script>
+        feather.replace(); // Initialize Feather Icons
+    </script>
+    <!-- Link to main script.js if needed for global functions -->
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

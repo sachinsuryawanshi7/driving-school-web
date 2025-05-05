@@ -12,8 +12,8 @@ body {
 
 .sidebar {
     width: 200px;
-    background-color: #333;
-    color: #fff;
+    background-color: #444;
+    color: #e01515;
     padding: 20px;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .sidebar a {
-    color: #fff;
+    color: #FF5714;
     text-decoration: none;
 }
 
@@ -116,4 +116,68 @@ body {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+/* Custom styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    background-color: #d82121; /* Changed to specified dark color */
+    color: #fff;
+}
+
+.sidebar .nav-link {
+    color: #457b9d; /* Light grey links */
+    transition: color 0.3s ease; /* Added transition for hover effect */
+}
+
+.sidebar .nav-link:hover {
+    color: #27187E; /* White on hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+}
+
+.sidebar .nav-link.active {
+    color: #D62839; /* White for active */
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly darker background for active */
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Adjust branch selector text color in the new sidebar */
+.sidebar .branch-selector label {
+    color: #adb5bd; /* Light grey for label */
+}
+
+.content {
+    padding: 20px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
 }

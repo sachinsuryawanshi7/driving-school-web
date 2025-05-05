@@ -1,59 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Akshay Gate’s Driving School Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="branch-selector">
-                <label for="branch">Select Branch:</label>
-                <select id="branch">
-                    <option value="branchA">Branch A</option>
-                    <option value="branchB">Branch B</option>
-                </select>
-            </div>
-            <ul>
-                <li><a href="index.html">Admin Dashboard (Home)</a></li>
-                <li><a href="add_customer.html">Add New Customer</a></li>
-                <li><a href="all_customers.html">All Customers</a></li>
-                <li><a href="add_expense.html">Add Expense</a></li>
-                <li><a href="add_testimonial.html">Add Testimonial</a></li>
-                <li><a href="manage_installments.html">Manage Installments</a></li>
-                <li><a href="manage_employees.html">Manage Employees</a></li>
-                <li><a href="reports.html">Reports</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg"> <!-- Added navbar-expand-lg for responsiveness -->
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="index.html">Akshay Gate’s Driving School</a> <!-- Updated href and added px-3 -->
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Added a collapse div for the search and sign out for smaller screens -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto px-3"> <!-- Used ml-auto to push to the right -->
+                 <li class="nav-item">
+                    <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> <!-- Removed w-100 -->
+                 </li>
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Sign out</a>
+                </li>
             </ul>
-        </nav>
-        <main class="content">
-            <h1>Welcome to the Admin Dashboard</h1>
-            <section class="summary-cards">
-                <div class="card">New Customers (This Month): 0</div>
-                <div class="card">April Expenses: ₹0</div>
-                <div class="card">Total Business: ₹0</div>
-                <div class="card">Employee Salary Paid: ₹0</div>
-                <div class="card">Paid Amount: ₹0</div>
-                <div class="card">Balance Amount: ₹0</div>
-                <div class="card">Office Rent: ₹0</div>
-                <div class="card">Other RTO Fees: ₹0</div>
-                <div class="card">Total Collection: ₹0</div>
-                <div class="card">Total Expense: ₹0</div>
-                <div class="card">Other Expenses: ₹0</div>
-            </section>
-            <section class="charts">
-                <h2>Monthly Income vs. Expenses</h2>
-                <canvas id="incomeExpenseChart"></canvas>
-                <h2>Expense Category Breakdown</h2>
-                <canvas id="expenseCategoryChart"></canvas>
-                <h2>Branch Comparison</h2>
-                <canvas id="branchComparisonChart"></canvas>
-            </section>
-        </main>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse vh-100 border-right"> <!-- Added vh-100 and border -->
+                <div class="sidebar-sticky pt-3 d-flex flex-column" style="height: calc(100% - 48px);"> <!-- Flex column for spacing -->
+                    <!-- Branch Selector Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown button
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </div>
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html"> <!-- Active class for this page -->
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_customer.html">
+                                <span data-feather="user-plus"></span>
+                                Add New Customer
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_customers.html">
+                                <span data-feather="users"></span>
+                                All Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_expense.html">
+                                <span data-feather="dollar-sign"></span>
+                                Add Expense
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_testimonial.html">
+                                <span data-feather="message-square"></span>
+                                Add Testimonial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manage_installments.html">
+                                <span data-feather="calendar"></span>
+                                Manage Installments
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="manage_employees.html">
+                                <span data-feather="briefcase"></span>
+                                Manage Employees
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <span data-feather="settings"></span>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav flex-column mt-auto mb-3"> <!-- Pushes logout to bottom -->
+                        <hr class="mx-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="#">
+                                <span data-feather="log-out"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <h5 class="text-muted">Welcome, Akshay Gate</h5>
+                </div>
+
+                <!-- Summary Cards Row 1 -->
+                <div class="row">
+                    <!-- New Customers Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            New Customers (Month)</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="newCustomers">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="users" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Month Expenses Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-danger shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                            Current Month Expenses</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="currentMonthExpenses">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                         <span data-feather="trending-down" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Business Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Business
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="totalBusiness">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="briefcase" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Employee Salary Paid Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Employee Salary Paid</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="employeeSalaryPaid">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="dollar-sign" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Cards Row 2 -->
+                <div class="row">
+                     <!-- Paid Amount Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Paid Amount</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="paidAmount">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="arrow-down-circle" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Balance Amount Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-secondary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                            Balance Amount</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="balanceAmount">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="alert-circle" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Office Rent Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-dark shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Office Rent
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="officeRent">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="home" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Other RTO Fees Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2"> <!-- Reusing color -->
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Other RTO Fees</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="rtoFees">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="file-text" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Summary Cards Row 3 -->
+                <div class="row">
+                     <!-- Total Collection Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2"> <!-- Reusing color -->
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Total Collection</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="totalCollection">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="arrow-up-circle" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Expense Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-danger shadow h-100 py-2"> <!-- Reusing color -->
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                            Total Expense</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="totalExpense">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="minus-circle" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other Expenses Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2"> <!-- Reusing color -->
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Other Expenses
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹<span id="otherExpenses">0</span></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span data-feather="archive" class="text-gray-300" style="width: 32px; height: 32px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Empty column to balance the row if needed, or add another card -->
+                     <div class="col-xl-3 col-md-6 mb-4"></div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="row mt-4">
+                    <div class="col-lg-7 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Monthly Income vs. Expenses</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="incomeExpenseChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mb-4">
+                         <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Expense Category Breakdown</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="expenseCategoryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Branch Comparison</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="branchComparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
     </div>
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script>
+        feather.replace(); // Initialize Feather Icons
+
+        // Placeholder for chart initialization and data loading from script.js
+        // Example (actual implementation should be in script.js):
+        /*
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Populate Cards (Example - replace with actual data loading) ---
+            document.getElementById('newCustomers').textContent = '15'; // Example value
+            document.getElementById('currentMonthExpenses').textContent = '5000';
+            document.getElementById('totalBusiness').textContent = '394850';
+            document.getElementById('employeeSalaryPaid').textContent = '85000';
+            document.getElementById('paidAmount').textContent = '350000';
+            document.getElementById('balanceAmount').textContent = '44850';
+            document.getElementById('officeRent').textContent = '15000';
+            document.getElementById('rtoFees').textContent = '2500';
+            document.getElementById('totalCollection').textContent = '394850'; // Should match Total Business?
+            document.getElementById('totalExpense').textContent = '107500'; // Sum of expense types
+            document.getElementById('otherExpenses').textContent = '5000';
+
+            // --- Chart Initialization (Example - replace with actual chart logic) ---
+            var ctxIncomeExpense = document.getElementById('incomeExpenseChart').getContext('2d');
+            var incomeExpenseChart = new Chart(ctxIncomeExpense, {
+                type: 'bar',
+                data: { labels: ['Jan', 'Feb', 'Mar', 'Apr'], datasets: [{ label: 'Income', data: [10, 20, 30, 40] }, { label: 'Expense', data: [5, 10, 15, 20] }] },
+                options: {}
+            });
+
+            var ctxExpenseCategory = document.getElementById('expenseCategoryChart').getContext('2d');
+            var expenseCategoryChart = new Chart(ctxExpenseCategory, {
+                type: 'pie',
+                data: { labels: ['Fuel', 'Rent', 'Salary', 'RTO', 'Misc'], datasets: [{ data: [30, 20, 25, 10, 15] }] },
+                options: {}
+            });
+
+            var ctxBranchComparison = document.getElementById('branchComparisonChart').getContext('2d');
+            var branchComparisonChart = new Chart(ctxBranchComparison, {
+                type: 'line',
+                data: { labels: ['Jan', 'Feb', 'Mar', 'Apr'], datasets: [{ label: 'Branch A', data: [10, 15, 12, 18] }, { label: 'Branch B', data: [8, 12, 10, 15] }] },
+                options: {}
+            });
+        });
+        */
+    </script>
 </body>
+
 </html>

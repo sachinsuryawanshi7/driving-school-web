@@ -3,57 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Add New Customer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="branch-selector">
-                <label for="branch">Select Branch:</label>
-                <select id="branch">
-                    <option value="branchA">Branch A</option>
-                    <option value="branchB">Branch B</option>
-                </select>
-            </div>
-            <ul>
-                <li><a href="index.html">Admin Dashboard (Home)</a></li>
-                <li><a href="add_customer.html">Add New Customer</a></li>
-                <li><a href="all_customers.html">All Customers</a></li>
-                <li><a href="add_expense.html">Add Expense</a></li>
-                <li><a href="add_testimonial.html">Add Testimonial</a></li>
-                <li><a href="manage_installments.html">Manage Installments</a></li>
-                <li><a href="manage_employees.html">Manage Employees</a></li>
-                <li><a href="reports.html">Reports</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg"> <!-- Added navbar-expand-lg for responsiveness -->
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="index.html">Akshay Gate’s Driving School</a> <!-- Updated href and added px-3 -->
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Added a collapse div for the search and sign out for smaller screens -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto px-3"> <!-- Used ml-auto to push to the right -->
+                 <li class="nav-item">
+                    <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> <!-- Removed w-100 -->
+                 </li>
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Sign out</a>
+                </li>
             </ul>
-        </nav>
-        <main class="content">
-            <h1>Add New Customer</h1>
-            <form id="add-customer-form">
-                <div class="form-group">
-                    <label for="branch">Branch:</label>
-                    <select id="branch" name="branch">
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse vh-100 border-right"> <!-- Added vh-100 and border -->
+                <div class="sidebar-sticky pt-3 d-flex flex-column" style="height: calc(100% - 48px);"> <!-- Flex column for spacing -->
+                    <!-- Branch Selector Dropdown -->
+                    <div class="dropdown px-3 mb-3">
+                        <button class="btn btn-secondary dropdown-toggle w-100 btn-sm" type="button" id="branchDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Branch
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="branchDropdown">
+                            <li><a class="dropdown-item" href="#" data-branch="branchA">Branch A</a></li>
+                            <li><a class="dropdown-item" href="#" data-branch="branchB">Branch B</a></li>
+                        </ul>
+                    </div>
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"> <!-- Removed active class -->
+                                <span data-feather="home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="add_customer.html"> <!-- Active class for this page -->
+                                <span data-feather="user-plus"></span>
+                                Add New Customer <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_customers.html">
+                                <span data-feather="users"></span>
+                                All Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_expense.html">
+                                <span data-feather="dollar-sign"></span>
+                                Add Expense
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_testimonial.html">
+                                <span data-feather="message-square"></span>
+                                Add Testimonial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manage_installments.html">
+                                <span data-feather="calendar"></span>
+                                Manage Installments
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="manage_employees.html">
+                                <span data-feather="briefcase"></span>
+                                Manage Employees
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <span data-feather="settings"></span>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav flex-column mt-auto mb-3"> <!-- Pushes logout to bottom -->
+                        <hr class="mx-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="#">
+                                <span data-feather="log-out"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Add New Customer</h1>
+                </div>
+
+                <form id="add-customer-form">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="branch-form">Branch:</label>
+                        <select id="branch-form" name="branch" class="form-control">
                         <option value="branchA">Branch A</option>
                         <option value="branchB">Branch B</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="customer_name">Customer Name:</label>
-                    <input type="text" id="customer_name" name="customer_name" required>
+                    <label class="font-weight-bold" for="customer_name">Customer Name:</label>
+                    <input type="text" id="customer_name" name="customer_name" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="contact_number">Contact Number:</label>
-                    <input type="text" id="contact_number" name="contact_number" required>
+                    <label class="font-weight-bold" for="contact_number">Contact Number:</label>
+                    <input type="text" id="contact_number" name="contact_number" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="email_id">Email ID:</label>
-                    <input type="email" id="email_id" name="email_id">
+                    <label class="font-weight-bold" for="email_id">Email ID:</label>
+                    <input type="email" id="email_id" name="email_id" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="course">Select Course:</label>
-                    <select id="course" name="course">
+                    <label class="font-weight-bold" for="course">Select Course:</label>
+                    <select id="course" name="course" class="form-control">
                         <option value="driving_course">Driving Course</option>
                         <option value="2_wheeler">2 Wheeler</option>
                         <option value="3_wheeler">3 Wheeler</option>
@@ -67,42 +152,151 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="total_payable_amount">Total Payable Amount:</label>
-                    <input type="number" id="total_payable_amount" name="total_payable_amount" required>
+                    <label class="font-weight-bold" for="total_payable_amount">Total Payable Amount:</label>
+                    <input type="number" id="total_payable_amount" name="total_payable_amount" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="paid_amount">Paid Amount:</label>
-                    <input type="number" id="paid_amount" name="paid_amount" required>
+                    <label class="font-weight-bold" for="paid_amount">Paid Amount:</label>
+                    <input type="number" id="paid_amount" name="paid_amount" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="balance_amount">Balance Amount:</label>
-                    <input type="number" id="balance_amount" name="balance_amount" readonly>
+                    <label class="font-weight-bold" for="balance_amount">Balance Amount:</label>
+                    <input type="number" id="balance_amount" name="balance_amount" class="form-control" readonly required>
                 </div>
                 <div class="form-group">
-                    <label for="entry_date">Entry Date:</label>
-                    <input type="date" id="entry_date" name="entry_date" required>
+                    <label class="font-weight-bold" for="entry_date">Entry Date:</label>
+                    <input type="date" id="entry_date" name="entry_date" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="next_installment_date">Next Installment Date:</label>
-                    <input type="date" id="next_installment_date" name="next_installment_date">
+                    <label class="font-weight-bold" for="payment_mode">Payment Mode:</label>
+                    <select id="payment_mode" name="payment_mode" class="form-control">
+                        <option value="cash">Cash</option>
+                        <option value="upi">UPI</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="aadhaar">Aadhaar:</label>
-                    <input type="file" id="aadhaar" name="aadhaar">
+                    <label class="font-weight-bold" for="next_installment_date">Next Installment Date:</label>
+                    <input type="date" id="next_installment_date" name="next_installment_date" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="licence">Licence:</label>
-                    <input type="file" id="licence" name="licence">
+                    <label class="font-weight-bold" for="aadhaar">Aadhaar:</label>
+                    <input type="file" id="aadhaar" name="aadhaar" class="form-control-file">
                 </div>
                 <div class="form-group">
-                    <label for="photo">Photo:</label>
-                    <input type="file" id="photo" name="photo">
+                    <label class="font-weight-bold" for="licence">Licence:</label>
+                    <input type="file" id="licence" name="licence" class="form-control-file">
                 </div>
-                <button type="submit">Submit</button>
-                <button type="reset">Cancel</button>
+                <div class="form-group">
+                    <label class="font-weight-bold" for="photo">Photo:</label>
+                    <input type="file" id="photo" name="photo" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Cancel</button> <!-- Changed btn-dark to btn-secondary -->
             </form>
-        </main>
+            </main>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script>
+        feather.replace(); // Initialize Feather Icons
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalPayableAmountInput = document.getElementById('total_payable_amount');
+            const paidAmountInput = document.getElementById('paid_amount');
+            const balanceAmountInput = document.getElementById('balance_amount');
+
+            function calculateBalance() {
+                const total = parseFloat(totalPayableAmountInput.value) || 0;
+                const paid = parseFloat(paidAmountInput.value) || 0;
+                balanceAmountInput.value = total - paid;
+            }
+
+            totalPayableAmountInput.addEventListener('input', calculateBalance);
+            paidAmountInput.addEventListener('input', calculateBalance);
+
+            // Set today's date as default for Entry Date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('entry_date').value = today;
+
+
+            const addCustomerForm = document.getElementById('add-customer-form');
+
+            addCustomerForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Keep default prevention
+
+                const branch = document.getElementById('branch-form').value; // Updated ID
+                const customerName = document.getElementById('customer_name').value;
+                const contactNumber = document.getElementById('contact_number').value;
+                const emailId = document.getElementById('email_id').value;
+                const course = document.getElementById('course').value;
+                const totalPayableAmount = document.getElementById('total_payable_amount').value;
+                const paidAmount = document.getElementById('paid_amount').value;
+                const balanceAmount = document.getElementById('balance_amount').value; // Already calculated
+                const entryDate = document.getElementById('entry_date').value;
+                const nextInstallmentDate = document.getElementById('next_installment_date').value;
+                const paymentMode = document.getElementById('payment_mode').value; // Get payment mode
+
+                // Basic validation (example)
+                if (!customerName || !contactNumber || !totalPayableAmount || !paidAmount || !entryDate) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                // Create new customer object
+                const newCustomer = {
+                    id: Date.now(), // Simple unique ID
+                    name: customerName,
+                    phone: contactNumber,
+                    email: emailId,
+                    course: course,
+                    totalFee: parseFloat(totalPayableAmount),
+                    paid: parseFloat(paidAmount),
+                    balance: parseFloat(balanceAmount),
+                    branch: branch,
+                    entryDate: entryDate,
+                    nextInstallment: nextInstallmentDate,
+                    paymentMode: paymentMode, // Add payment mode
+                    status: 'Active',
+                    // Add placeholders for file data if needed, actual upload requires server-side handling
+                    aadhaarFile: document.getElementById('aadhaar').files[0]?.name || null,
+                    licenceFile: document.getElementById('licence').files[0]?.name || null,
+                    photoFile: document.getElementById('photo').files[0]?.name || null
+                };
+
+                // --- Local Storage Handling ---
+                // It's generally better to handle data persistence on a server,
+                // but following the existing pattern for now.
+                try {
+                    let dashboardData = JSON.parse(localStorage.getItem('dashboardData')) || { customers: [], expenses: [], testimonials: [], employees: [] }; // Initialize if null
+
+                    // Ensure customers array exists
+                    if (!Array.isArray(dashboardData.customers)) {
+                        dashboardData.customers = [];
+                    }
+
+                    dashboardData.customers.push(newCustomer);
+                    localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
+
+                    alert('Customer added successfully!');
+                    addCustomerForm.reset(); // Reset the form
+                    calculateBalance(); // Recalculate balance (should be 0 after reset)
+                    document.getElementById('entry_date').value = today; // Reset date to today
+                    // Optionally redirect: window.location.href = 'all_customers.html';
+
+                } catch (error) {
+                    console.error("Error saving customer data:", error);
+                    alert("Failed to save customer data. Please check console for details.");
+                }
+                // --- End Local Storage Handling ---
+            });
+
+            // Initialize balance calculation on page load
+            calculateBalance();
+        });
+    </script>
 </body>
 </html>
